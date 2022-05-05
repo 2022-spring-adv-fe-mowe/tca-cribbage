@@ -73,6 +73,22 @@ export const PlayGame = ({
         if (pegs > highPegg) setHighPegg(pegs);
     }
 
+    const goBack = () => {
+        setGameOver(false);
+        setEndGame(false);
+        setWon(false);
+
+        if (!pegging && score > 121) {
+            if (isCrib) {
+                const s = score - hand - crib;
+                setScore(s);
+            } else {
+                const s = score - hand;
+                setScore(s);
+            }
+        }
+    }
+
     const scoreIsValid = (type, num) => {
         if (num === 19 || num >= 30 || num < 0) {
             setMessage({ type: "danger", msg: "Invalid score entered.", show: true });
@@ -172,12 +188,6 @@ export const PlayGame = ({
         })
 
         nav(-2);
-    }
-
-    const goBack = () => {
-        setGameOver(false);
-        setEndGame(false);
-        setWon(false);
     }
 
     return (
