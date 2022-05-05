@@ -174,6 +174,12 @@ export const PlayGame = ({
         nav(-2);
     }
 
+    const goBack = () => {
+        setGameOver(false);
+        setEndGame(false);
+        setWon(false);
+    }
+
     return (
         <>
             <div className={`players-container-overlay ${!cut ? "open" : ""}`}></div>
@@ -247,6 +253,9 @@ export const PlayGame = ({
 
                         {over && (
                             <>
+                                <button className="btn btn-info my-2" onClick={goBack}>
+                                    <i className="fa-solid fa-circle-chevron-left"></i> Whoops! Go Back!
+                                </button>
                                 {won && (
                                     <>
                                         <h2 className="text-center mt-3">YOU WON! 🏆</h2>
